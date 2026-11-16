@@ -70,3 +70,12 @@ build.ninja
 .vscode/
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,c++
+/out/build/x64-Debug/.cmake/api/v1/reply
+/out
+/.vs/SET09121_Coursework/v18
+/.vs/SET09121_Coursework/FileContentIndex
+.vs/VSWorkspaceState.json
+.vs/slnx.sqlite-journal
+.vs/slnx.sqlite
+.vs/ProjectSettings.json
+.vs/CMake Overview
