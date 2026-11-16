@@ -1,7 +1,6 @@
 #pragma once
-#include "ecm.hpp"
+#include "engine/ecm.hpp"
 #include <SFML/Graphics.hpp>
-
 
 class ShapeComponent : public Component {
 public:
@@ -13,28 +12,27 @@ public:
 
   sf::Shape &get_shape() const;
 
-  template <typename T, typename... Targs>
-  void set_shape(Targs... params) {
+  template <typename T, typename... Targs> void set_shape(Targs... params) {
     _shape = std::make_shared<T>(params...);
   }
+
 protected:
   std::shared_ptr<sf::Shape> _shape;
 };
-
 
 class SpriteComponent : public Component {
 protected:
   std::shared_ptr<sf::Sprite> _sprite;
   std::shared_ptr<sf::Texture> _texture;
+
 public:
   SpriteComponent() = delete;
 
-  explicit SpriteComponent(Entity* p);
+  explicit SpriteComponent(Entity *p);
   void update(const float &dt) override;
   void render() override;
 
-  sf::Sprite& get_sprite() const;
-
+  sf::Sprite &get_sprite() const;
 
   void set_texure(std::shared_ptr<sf::Texture> tex);
 };

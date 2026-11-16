@@ -54,4 +54,19 @@
 .history
 .ionide
 
+##Build directory exclusion
+# Build output
+/build/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+build.ninja
+.ninja_deps
+.ninja_log
+
+# IDE files
+.vscode/
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,c++
