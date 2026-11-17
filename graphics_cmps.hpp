@@ -40,5 +40,6 @@ public:
 
   sf::Sprite &get_sprite() const;
 
+  // Need to implement this in graphics_cmps.cpp
   void set_texure(std::shared_ptr<sf::Texture> tex);
 };

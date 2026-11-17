@@ -45,11 +45,11 @@ void LevelScene::_load_level(const std::string &file_path) {
 
   _player = make_entity();
 
-  _player->set_position(ls::get_start_position());
-  
-//
+  // Change this to SpriteComponent
+  //
   std::shared_ptr<ShapeComponent> shape =
       _player->add_component<ShapeComponent>();
+  // Change  this to set_texture
   shape->set_shape<sf::RectangleShape>(
       sf::Vector2f(param::player_size[0], param::player_size[1]));
 

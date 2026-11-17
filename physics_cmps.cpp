@@ -4,6 +4,7 @@
 #include "physics.hpp"
 #include <algorithm>
 #include <iostream>
+#include <memory>
 
 using param = Parameters;
 using ph = Physics;
