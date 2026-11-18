@@ -6,6 +6,9 @@
 std::shared_ptr<Scene> GameSystem::_active_scene;
 bool GameSystem::_physics_enabled;
 
+/*
+
+*/
 void GameSystem::start(unsigned int width, unsigned int height,
                        const std::string &name, const float &time_step,
                        bool physics_enabled) {
@@ -73,6 +76,7 @@ void Scene::render() {
 void Scene::unload() { _entities.list.clear(); }
 
 const std::shared_ptr<Entity> &Scene::make_entity() {
+//
   std::shared_ptr<Entity> entity = std::make_shared<Entity>();
   _entities.list.push_back(entity);
   return _entities.list.back();

@@ -5,8 +5,8 @@
 
 class Physics {
 public:
-  static void initialise();          // initialise the box2d world
-  static void shutdown();            // close the physics engine
+  static void initialise(); // initialise the box2d world
+  static void shutdown(); // close the physics engine
   static void update(const float &); // step the simulation
 
   static b2WorldId get_world_id();

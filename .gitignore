@@ -79,3 +79,4 @@ build.ninja
 .vs/slnx.sqlite
 .vs/ProjectSettings.json
 .vs/CMake Overview
+/.vs

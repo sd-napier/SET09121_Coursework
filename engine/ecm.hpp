@@ -23,14 +23,19 @@ protected:
   explicit Component(Entity *const p);
 };
 
+/*
+
+*/
 class Entity {
 public:
   Entity() {}
   virtual ~Entity();
 
+//
   virtual void update(const float &dt);
   virtual void render();
 
+//
   template <typename T, typename... Targs>
   std::shared_ptr<T> add_component(Targs... params) {
     static_assert(std::is_base_of<Component, T>::value, "T != component");
@@ -40,6 +45,7 @@ public:
     return sp;
   }
 
+//
   template <typename T>
   const std::vector<std::shared_ptr<T>> get_components() const {
     static_assert(std::is_base_of<Component, T>::value, "T != component");
@@ -55,6 +61,7 @@ public:
     return ret;
   }
 
+//
   template <typename T>
   const std::vector<std::shared_ptr<T>> get_compatible_components() {
     static_assert(std::is_base_of<Component, T>::value, "T != component");
@@ -72,6 +79,7 @@ public:
     return ret;
   }
 
+//
   const sf::Vector2f &get_position() const;
   void set_position(const sf::Vector2f &position);
   bool is_for_deletion() const;
@@ -83,6 +91,7 @@ public:
   bool is_visible() const;
   void set_visible(bool visible);
 
+//
 protected:
   std::vector<std::shared_ptr<Component>> _components;
   sf::Vector2f _position;
@@ -93,6 +102,7 @@ protected:
 };
 
 struct EntityManager {
+//
   std::vector<std::shared_ptr<Entity>> list;
   void update(const float &dt);
   void render();

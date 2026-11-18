@@ -5,6 +5,7 @@ using ls = LevelSystem;
 b2WorldId Physics::_world_id;
 
 void Physics::initialise(){
+//
     b2WorldDef world_def = b2DefaultWorldDef();
     world_def.gravity = b2Vec2({0.0f, gravity});  
     _world_id = b2CreateWorld(&world_def);
@@ -34,7 +35,8 @@ const sf::Vector2f Physics::bv2_to_sv2(const b2Vec2& in) {
 const b2Vec2 Physics::sv2_to_bv2(const sf::Vector2f& in) {
   return {in.x * physics_scale_inv, in.y * physics_scale_inv};
 }
-//Convert from screenspace.y to physics.y (as they are the other way around)
+
+//
 const sf::Vector2f Physics::invert_height(const sf::Vector2f& in, const int& game_height) {
   return sf::Vector2f(in.x, game_height - in.y);
 }

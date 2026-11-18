@@ -4,6 +4,9 @@
 #include <array>
 #include <vector>
 
+/*
+
+*/
 class PlatformComponent : public Component {
 public:
   PlatformComponent(Entity *p, const std::vector<sf::Vector2i> &tile_group,
@@ -21,6 +24,9 @@ protected:
   void _create_chain_shape(const std::vector<sf::Vector2i> &tile_group);
 };
 
+/*
+
+*/
 class PhysicsComponent : public Component {
 public:
   PhysicsComponent(Entity *p, bool dyn);
@@ -52,6 +58,9 @@ protected:
   float _mass;
 };
 
+/*
+
+*/
 class PlayerPhysicsComponent : public PhysicsComponent {
 protected:
   b2Vec2 _size;

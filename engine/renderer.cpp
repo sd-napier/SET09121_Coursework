@@ -9,12 +9,16 @@ void Renderer::initialise(sf::RenderWindow &r) { rw = &r; }
 sf::RenderWindow &Renderer::get_window() { return *rw; }
 
 void Renderer::shutdown() {
+//When shutting down, take out all the sprites.
   while (!sprites.empty())
     sprites.pop();
 }
 
 void Renderer::update(const float &) {}
 
+/*
+
+*/
 void Renderer::render() {
   if (rw == nullptr) {
     throw("No render window set! ");

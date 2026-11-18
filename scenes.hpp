@@ -7,6 +7,9 @@
 #include "tile_level_loader/level_system.hpp"
 #include <iostream>
 
+/*
+
+*/
 class MenuScene : public Scene {
 public:
   MenuScene() = default;
@@ -21,6 +24,9 @@ private:
   sf::Font _font;
 };
 
+/*
+
+*/
 class LevelScene : public Scene {
 public:
   LevelScene() = default;
@@ -36,6 +42,7 @@ private:
 };
 
 struct Scenes {
+//
   static std::shared_ptr<Scene> menu;
   static std::shared_ptr<Scene> level;
 };

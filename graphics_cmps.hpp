@@ -2,6 +2,9 @@
 #include "engine/ecm.hpp"
 #include <SFML/Graphics.hpp>
 
+/*
+
+*/
 class ShapeComponent : public Component {
 public:
   ShapeComponent() = delete;
@@ -20,6 +23,9 @@ protected:
   std::shared_ptr<sf::Shape> _shape;
 };
 
+/*
+
+*/
 class SpriteComponent : public Component {
 protected:
   std::shared_ptr<sf::Sprite> _sprite;

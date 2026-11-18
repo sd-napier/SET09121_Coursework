@@ -9,6 +9,9 @@ using param = Parameters;
 using ph = Physics;
 using ls = LevelSystem;
 
+/*
+This is a block comment, it describes a large method when you hover over a reference to it.
+*/
 PlatformComponent::PlatformComponent(
     Entity *p, const std::vector<sf::Vector2i> &tile_group, float friction,
     float restitution)
@@ -23,13 +26,21 @@ void PlatformComponent::update(const float &dt) {}
 
 void PlatformComponent::render() {}
 
+/*
+Method Description
+*/
 PlatformComponent::~PlatformComponent() {
   b2DestroyChain(_chain_id);
   _chain_id = b2_nullChainId;
   b2DestroyBody(_body_id);
   _body_id = b2_nullBodyId;
 }
+
+/*
+Method Description
+*/
 void PlatformComponent::_create_chain_shape(
+//
     const std::vector<sf::Vector2i> &tile_group) {
   std::vector<b2Vec2> points;
   for (int i = 0; i < tile_group.size(); i++) {
@@ -61,6 +72,7 @@ void PlatformComponent::_create_chain_shape(
             : ls::EMPTY};
     sf::Vector2f pos = ls::get_tile_position(tile);
 
+//
     std::vector<sf::Vector2f> pts;
     if (neighbors[0] == ls::EMPTY || neighbors[1] == ls::EMPTY ||
         neighbors[7] == ls::EMPTY)
@@ -88,6 +100,8 @@ void PlatformComponent::_create_chain_shape(
         points.push_back(point);
     }
   }
+
+//
   b2Vec2 centroid = {0, 0};
   for (const b2Vec2 pt : points) {
     centroid.x += pt.x;
@@ -109,6 +123,7 @@ void PlatformComponent::_create_chain_shape(
   });
   points.push_back(points.front());
 
+//
   b2SurfaceMaterial material = b2DefaultSurfaceMaterial();
   material.friction = _friction;
   material.restitution = _restitution;
@@ -124,6 +139,9 @@ void PlatformComponent::_create_chain_shape(
   shape_ids.size();
 }
 
+/*
+Method Description
+*/
 void PhysicsComponent::update(const float &dt) {
   std::cout << dt << std::endl;
   _parent->set_position(ph::invert_height(
@@ -160,6 +178,9 @@ void PhysicsComponent::set_mass(float m) {
   b2Shape_SetDensity(_shape_id, m, true);
 }
 
+/*
+Method Description
+*/
 void PhysicsComponent::teleport(const sf::Vector2f &v) {
   b2CosSin cos_sin = b2ComputeCosSin(0.0f);
   b2Rot rot;
@@ -178,6 +199,9 @@ void PhysicsComponent::set_velocity(const sf::Vector2f &v) {
 
 const b2ShapeId &PhysicsComponent::get_shape_id() const { return _shape_id; }
 
+/*
+Method Description
+*/
 PhysicsComponent::~PhysicsComponent() {
   b2DestroyShape(_shape_id, true);
   _shape_id = b2_nullShapeId;
@@ -188,6 +212,7 @@ PhysicsComponent::~PhysicsComponent() {
 void PhysicsComponent::render() {}
 
 void PhysicsComponent::impulse(const sf::Vector2f &i) {
+//
   b2Vec2 a;
   a.x = i.x;
   a.y = i.y * -1.f;
@@ -196,6 +221,7 @@ void PhysicsComponent::impulse(const sf::Vector2f &i) {
 }
 
 void PhysicsComponent::dampen(const sf::Vector2f &i) {
+//
   auto vel = b2Body_GetLinearVelocity(_body_id);
   vel.x *= i.x;
   vel.y *= i.y;
@@ -203,11 +229,15 @@ void PhysicsComponent::dampen(const sf::Vector2f &i) {
 }
 
 int PhysicsComponent::get_contacts(
+//
     std::array<b2ContactData, 10> &contacts) const {
   int contact_count = b2Body_GetContactData(_body_id, contacts.data(), 10);
   return contact_count;
 }
 
+/*
+Method Description
+*/
 void PhysicsComponent::create_box_shape(const sf::Vector2f &size, float mass,
                                         float friction, float restitution) {
   _mass = mass;
@@ -223,6 +253,9 @@ void PhysicsComponent::create_box_shape(const sf::Vector2f &size, float mass,
   _shape_id = b2CreatePolygonShape(_body_id, &shape_def, &polygon);
 }
 
+/*
+Method Description
+*/
 void PhysicsComponent::create_capsule_shape(const sf::Vector2f &size,
                                             float mass, float friction,
                                             float restitution) {
@@ -242,6 +275,9 @@ void PhysicsComponent::create_capsule_shape(const sf::Vector2f &size,
   _shape_id = b2CreateCapsuleShape(_body_id, &shape_def, &capsule);
 }
 
+/*
+Method Description
+*/
 PlayerPhysicsComponent::PlayerPhysicsComponent(Entity *p,
                                                const sf::Vector2f &size)
     : PhysicsComponent(p, true) {
@@ -256,6 +292,7 @@ PlayerPhysicsComponent::PlayerPhysicsComponent(Entity *p,
   //  b2Body_SetBullet(_body_id,true);
 }
 
+//
 bool PlayerPhysicsComponent::is_grounded() const {
   std::array<b2ContactData, 10> contacts;
   int count = get_contacts(contacts);
@@ -271,6 +308,9 @@ bool PlayerPhysicsComponent::is_grounded() const {
   return false;
 }
 
+/*
+Method Description
+*/
 void PlayerPhysicsComponent::update(const float &dt) {
   const sf::Vector2f pos = _parent->get_position();
   b2Vec2 b2_pos = ph::sv2_to_bv2(ph::invert_height(pos, param::game_height));

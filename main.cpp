@@ -16,6 +16,7 @@ int main() {
   GameSystem::set_active_scene(Scenes::menu);
   GameSystem::start(param::game_width, param::game_height, "Platformer",
                     Physics::time_step, true);
+// When game loop ends the program shuts down physics and ends.
   Physics::shutdown();
   return 0;
 }

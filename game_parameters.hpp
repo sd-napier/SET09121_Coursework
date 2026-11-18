@@ -1,6 +1,10 @@
 #pragma once
 #define M_PI 3.14159265358979323846
 
+/*
+A series of static parameters to define how the game is constructed,
+where the resources are and what the physics properties of the character are.
+*/
 struct Parameters {
   static constexpr int game_width = 1280;
   static constexpr int game_height = 720;

@@ -6,6 +6,9 @@
 
 class Scene; // forward definition
 
+/*
+
+*/
 class GameSystem {
 public:
   static void start(unsigned int width, unsigned int height,
@@ -16,6 +19,7 @@ public:
   static void set_active_scene(const std::shared_ptr<Scene> &act_sc);
   static std::shared_ptr<Scene> &get_active_scene() { return _active_scene; }
 
+//
 private:
   static void _init();
   static void _update(const float &dt);
@@ -24,6 +28,9 @@ private:
   static bool _physics_enabled;
 };
 
+/*
+
+*/
 class Scene {
 public:
   Scene() = default;
