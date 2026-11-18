@@ -215,6 +215,7 @@ void PhysicsComponent::dampen(const sf::Vector2f &i) {
   b2Body_SetLinearVelocity(_body_id, vel);
 }
 
+// Checks whether a body is in contact with another
 int PhysicsComponent::get_contacts(
     std::array<b2ContactData, 10> &contacts) const {
   int contact_count = b2Body_GetContactData(_body_id, contacts.data(), 10);
