@@ -58,6 +58,7 @@ jobs:
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
 
     - name: Install SFML dependencies
+      if: runner.os == 'Linux'
       run: |
         sudo apt-get update
         sudo apt-get install -y \
