@@ -33,7 +33,7 @@ void MenuScene::load() {
   _text.setFont(_font);
   _text.setCharacterSize(60);
   _text.setString(
-      "Welcome to Koal the Kat!\n Press Space to start\n Press Esc to close");
+      "Welcome to Koal the Kat!\n Press Space to start\n Press Esc to close!");
 }
 
 void MenuScene::unload() {}
