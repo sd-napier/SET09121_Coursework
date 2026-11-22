@@ -17,7 +17,9 @@ void MenuScene::update(const float &dt) {
   // Responds to user key presses that match type "Space" and passes float &dt.
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
     gs::set_active_scene(Scenes::level);
-  }
+  } // else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::K)){
+
+  //}
   Scene::update(dt);
 }
 
@@ -32,8 +34,8 @@ void MenuScene::load() {
   _font.loadFromFile("resources/fonts/PixelGameFont.ttf");
   _text.setFont(_font);
   _text.setCharacterSize(60);
-  _text.setString(
-      "Welcome to Koal the Kat!\n Press Space to start\n Press Esc to close!");
+  _text.setString("Welcome to Koal the Kat!\n Press Space to start\n Press Esc "
+                  "to close\n\n Press k to change Keyboard settings");
 }
 
 void MenuScene::unload() {}
