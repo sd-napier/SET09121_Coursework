@@ -35,7 +35,7 @@ void MenuScene::load() {
   _text.setFont(_font);
   _text.setCharacterSize(60);
   _text.setString("Welcome to Koal the Kat!\n Press Space to start\n Press Esc "
-                  "to close\n\n Press k to change Keyboard settings");
+                  "to close\n Press K to change Keyboard settings");
 }
 
 void MenuScene::unload() {}
