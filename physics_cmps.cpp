@@ -285,6 +285,11 @@ bool PlayerPhysicsComponent::is_grounded() const {
   return false;
 }
 
+/*This function initially inverts the height of the physics component
+ * so that it works from bottom to top, not default top to bottom
+ * that the screen logic works from.
+ * It also handles the key logic/actions for key presses
+ */
 void PlayerPhysicsComponent::update(const float &dt) {
   const sf::Vector2f pos = _parent->get_position();
   b2Vec2 b2_pos = ph::sv2_to_bv2(ph::invert_height(pos, param::game_height));
