@@ -14,7 +14,7 @@ ShapeComponent::ShapeComponent(Entity *p)
     : Component(p), _shape(std::make_shared<sf::CircleShape>()) {}
 
 void SpriteComponent::set_texure(std::shared_ptr<sf::Texture> tex) {
-//
+  //
   _texture = tex;
   _sprite->setTexture(*_texture);
 }
@@ -25,7 +25,7 @@ SpriteComponent::SpriteComponent(Entity *p)
     : Component(p), _sprite(std::make_shared<sf::Sprite>()) {}
 
 void SpriteComponent::update(const float &dt) {
-//
+  //
   _sprite->setPosition(_parent->get_position());
   _sprite->setRotation((_parent->get_rotation()) / M_PI * 180.f);
 }
