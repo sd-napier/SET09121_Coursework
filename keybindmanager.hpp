@@ -1,11 +1,7 @@
 #pragma once
 #include <SFML/Window/Keyboard.hpp>
-#include <algorithm>
-#include <fstream>
-#include <iostream>
 #include <map>
 #include <string>
-#include <vector>
 
 // struct with default keybindings, which will only be used if the keybinds.txt
 // file is empty
