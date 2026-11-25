@@ -15,18 +15,19 @@ struct Action {
 class KeyBindManager {
 
 public:
-  static KeyBindManager &get_instance();
-  static KeyBindManager instance;
+  static KeyBindManager &get_instance() {
+    static KeyBindManager instance;
+    return instance;
+  }
 
   bool loadFromFile(const std::string &filepath);
   bool writeToFile(const std::string &filepath) const;
-
   void setBinding(Action action, sf::Keyboard::Key key);
   sf::Keyboard::Key getBinding(Action action) const;
   bool isActionPressed(Action action) const;
   std::string getKeyName(sf::Keyboard::Key key) const;
+  std::string filepath = "/lib/keys/keybinds.txt";
 
 private:
   KeyBindManager() {};
-  KeyBindManager(const KeyBindManager &) = delete;
 };
