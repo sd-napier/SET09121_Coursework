@@ -29,7 +29,12 @@ bool KeyBindManager::loadFromFile(const std::string &filepath) {
   return true;
 }
 
-// This saves all bindings back to keybinds.txt using std::ofstream
+/* This saves all bindings back to keybinds.txt using std::ofstream
+ * Initially wouldn't work until I found out that using a const at the end
+ * was needed to protect the KeyBindManager, and read from _bindings only as
+opposed to modify it
+*/
+
 bool KeyBindManager::writeToFile(const std::string &filepath) const {
   std::ofstream keybindsSaver(filepath);
   // Returns false and shows an error if keybinds.txt can't be opened
