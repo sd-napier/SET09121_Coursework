@@ -1,0 +1,4 @@
+MoveLeft Left
+MoveRight Right
+Jump Up
+Meow Space
