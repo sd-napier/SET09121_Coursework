@@ -1,4 +1,0 @@
-"Move Left": "Left",
-"Move Right": "Right",
-"Jump": "Up",
-"Meow": "Space"
