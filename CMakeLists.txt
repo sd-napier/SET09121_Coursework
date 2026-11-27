@@ -37,6 +37,7 @@ add_executable(platformer
     main.cpp 
     scenes.cpp
     graphics_cmps.cpp
+    keybindmanager.cpp
     physics_cmps.cpp)
 target_include_directories(platformer PRIVATE ${SFML_INCS} ${B2D_INCS} engine tile_level_loader)
 target_link_libraries(platformer sfml-graphics box2d engine tile_level)
