@@ -6,6 +6,9 @@
 #include "renderer.hpp"
 #include "tile_level_loader/level_system.hpp"
 #include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
 
 /*
 
@@ -22,6 +25,22 @@ private:
   std::shared_ptr<Entity> _player;
   sf::Text _text;
   sf::Font _font;
+};
+
+class SettingsScene : public Scene {
+public:
+  void update(const float &dt) override;
+  void render() override;
+  void load() override;
+  void unload() override;
+  void handleEvent(const sf::Event &event) override;
+
+private:
+  std::shared_ptr<Entity> _player;
+  sf::Text _settingsText;
+  sf::Font _settingsFont;
+  std::vector<sf::Text> menuItems;
+  int selectedIndex = 0;
 };
 
 /*
@@ -42,7 +61,8 @@ private:
 };
 
 struct Scenes {
-//
+  //
   static std::shared_ptr<Scene> menu;
   static std::shared_ptr<Scene> level;
+  static std::shared_ptr<Scene> settings;
 };
