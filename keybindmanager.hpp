@@ -32,6 +32,6 @@ public:
 private:
   KeyBindManager() {};
 
-  // A map to store the key bindings, will be needed as the
+  // A map to store the key bindings, will be needed for loading bindings
   std::map<std::string, sf::Keyboard::Key> _bindings;
 };
