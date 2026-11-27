@@ -26,6 +26,8 @@ void GameSystem::start(unsigned int width, unsigned int height,
         clean();
         return;
       }
+      // Pass the event to the active scene, needed for keyboard settings menu
+      _active_scene->handleEvent(event);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
       window.close();
@@ -76,7 +78,7 @@ void Scene::render() {
 void Scene::unload() { _entities.list.clear(); }
 
 const std::shared_ptr<Entity> &Scene::make_entity() {
-//
+  //
   std::shared_ptr<Entity> entity = std::make_shared<Entity>();
   _entities.list.push_back(entity);
   return _entities.list.back();
