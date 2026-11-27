@@ -1,4 +1,5 @@
 #include "scenes.hpp"
+#include "SFML/Window/Keyboard.hpp"
 #include "game_parameters.hpp"
 #include "graphics_cmps.hpp"
 #include "keybindmanager.hpp"
@@ -17,17 +18,26 @@ std::shared_ptr<Scene> Scenes::level;
 std::shared_ptr<Scene> Scenes::settings;
 
 // Instantiate the key bind manager here, note that a reference is used because
-// otherwise a copy of the object would be created
+// otherwise a copy of the object would be created/would not compile
 KeyBindManager &settingsKeyBind = KeyBindManager::get_instance();
 
 void MenuScene::update(const float &dt) {
   // Responds to user key presses that match type "Space" and passes float &dt.
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
     gs::set_active_scene(Scenes::level);
+    // Pressing K opens keyboard settings
   } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
     gs::set_active_scene(Scenes::settings);
   }
   Scene::update(dt);
+}
+
+void MenuScene::handleEvent(const sf::Event &event) {
+  if (event.type == sf::Event::KeyPressed) {
+    if (event.key.code == sf::Keyboard::Escape) {
+      Renderer::get_window().close();
+    }
+  }
 }
 
 void MenuScene::render() {
@@ -103,7 +113,7 @@ void SettingsScene::load() {
   _settingsFont.loadFromFile("resources/fonts/PixelGameFont.ttf");
   // Set up the heading
   _settingsText.setFont(_settingsFont);
-  _settingsText.setCharacterSize(60);
+  _settingsText.setCharacterSize(50);
   _settingsText.setString("You can change keyboard settings here:\n");
   _settingsText.setPosition(100.f, 40.f);
   // Load keyboard bindings

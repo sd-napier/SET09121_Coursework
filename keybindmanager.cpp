@@ -13,7 +13,6 @@ bool KeyBindManager::loadFromFile(const std::string &filepath) {
   }
 
   _bindings.clear();
-
   std::string action;
   int keyCode;
 
