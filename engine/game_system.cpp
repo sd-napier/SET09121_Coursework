@@ -29,9 +29,7 @@ void GameSystem::start(unsigned int width, unsigned int height,
       // Pass the event to the active scene, needed for keyboard settings menu
       _active_scene->handleEvent(event);
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-      window.close();
-    }
+
     window.clear();
     _update(dt);
     _render();
