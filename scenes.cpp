@@ -88,12 +88,10 @@ void SettingsScene::handleEvent(const sf::Event &event) {
 void SettingsScene::render() {
   // Draw the heading
   Renderer::queue(&_settingsText);
-
   // Draw each menu option
   for (auto &item : menuItems) {
     Renderer::queue(&item);
   }
-
   // Render the rest of the scene
   Scene::render();
 }
@@ -199,6 +197,18 @@ void LevelScene::render() {
   ls::render(Renderer::get_window());
   Scene::render();
   _entities.render();
+}
+
+/*Added event handling here so that if in game and Esc is pressed, then it takes
+ * you right back to the loading menu. If from there you press Esc, you exit the
+ * game
+ */
+void LevelScene::handleEvent(const sf::Event &event) {
+  if (event.type == sf::Event::KeyPressed) {
+    if (event.key.code == sf::Keyboard::Escape) {
+      gs::set_active_scene(Scenes::menu);
+    }
+  }
 }
 
 void LevelScene::unload() {
