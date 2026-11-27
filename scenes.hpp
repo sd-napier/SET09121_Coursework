@@ -54,6 +54,7 @@ public:
   void render() override;
   void load() override;
   void unload() override;
+  void handleEvent(const sf::Event &event) override;
 
 private:
   std::shared_ptr<Entity> _player;
