@@ -19,7 +19,7 @@ public:
   static void set_active_scene(const std::shared_ptr<Scene> &act_sc);
   static std::shared_ptr<Scene> &get_active_scene() { return _active_scene; }
 
-//
+  //
 private:
   static void _init();
   static void _update(const float &dt);
@@ -29,8 +29,11 @@ private:
 };
 
 /*
-
-*/
+ * Modified the Scene class to have an event handler overried, necessary to
+ * ensure the new window for keyboard settings menu on the loading menu has
+ * events to capture keypresses in that outside of the main settings menu
+ *
+ */
 class Scene {
 public:
   Scene() = default;
@@ -40,6 +43,7 @@ public:
   virtual void render();
   virtual void load() = 0;
   virtual void unload();
+  virtual void handleEvent(const sf::Event &event) {}
 
   const std::shared_ptr<Entity> &make_entity();
 
